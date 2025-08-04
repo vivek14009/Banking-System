@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Banking System Registration</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+  /* Reset and base */
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #ffffff;
+    color: #374151; /* neutral gray-700 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 16px;
+  }
+
+  .register-container {
+    background: #f9fafb; /* neutral 50 */
+    padding: 48px 40px 56px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 480px;
+  }
+
+  h1 {
+    font-weight: 700;
+    font-size: 2.5rem;
+    margin-bottom: 24px;
+    color: #111827; /* neutral 900 */
+    letter-spacing: -0.025em;
+    text-align: center;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  label {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 8px;
+    color: #4b5563; /* neutral 600 */
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .material-icons {
+    color: #6b7280; /* neutral 500 */
+    font-size: 20px;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="date"],
+  input[type="password"],
+  input[type="number"] {
+    padding: 14px 16px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1.5px solid #d1d5db; /* neutral 300 */
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    width: 100%;
+    outline-offset: 2px;
+  }
+  input[type="text"]:focus,
+  input[type="email"]:focus,
+  input[type="tel"]:focus,
+  input[type="date"]:focus,
+  input[type="password"]:focus,
+  input[type="number"]:focus {
+    border-color: #2563eb; /* blue-600 */
+    box-shadow: 0 0 8px rgba(37, 99, 235, 0.4);
+  }
+
+  .submit-btn {
+    background: #2563eb; /* blue-600 */
+    color: white;
+    font-weight: 700;
+    font-size: 1.125rem;
+    padding: 16px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    user-select: none;
+  }
+  .submit-btn:hover,
+  .submit-btn:focus-visible {
+    background-color: #1d4ed8; /* blue-700 */
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.5);
+  }
+
+  /* Accessibility focus outline */
+  input:focus-visible,
+  .submit-btn:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 520px) {
+    .register-container {
+      padding: 32px 20px 40px;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+  }
+</style>
+</head>
+<body>
+  <main class="register-container" role="main" aria-labelledby="registerHeading">
+    <h1 id="registerHeading">Create a New Account</h1>
+    <form action="#" method="POST" autocomplete="on" novalidate>
+      <label for="name">
+        <span class="material-icons" aria-hidden="true">person</span>
+        Full Name
+      </label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        placeholder="John Doe"
+        required
+        aria-required="true"
+        autocomplete="name"
+      />
+
+      <label for="email">
+        <span class="material-icons" aria-hidden="true">email</span>
+        Email Address
+      </label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        placeholder="you@example.com"
+        required
+        aria-required="true"
+        autocomplete="email"
+      />
+
+      <label for="phone">
+        <span class="material-icons" aria-hidden="true">phone</span>
+        Phone Number
+      </label>
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        placeholder="+91 98765 43210"
+        pattern="^(\+91[\-\s]?)?[6-9]\d{9}$"
+        required
+        aria-required="true"
+        autocomplete="tel"
+      />
+
+      <label for="dob">
+        <span class="material-icons" aria-hidden="true">cake</span>
+        Date of Birth
+      </label>
+      <input
+        type="date"
+        id="dob"
+        name="dob"
+        required
+        aria-required="true"
+        max=""
+      />
+
+      <label for="password">
+        <span class="material-icons" aria-hidden="true">lock</span>
+        Password
+      </label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        placeholder="********"
+        required
+        aria-required="true"
+        minlength="8"
+        autocomplete="new-password"
+      />
+
+      <label for="amount">
+        <span class="material-icons" aria-hidden="true">currency_rupee</span>
+        Initial Amount
+      </label>
+      <input
+        type="number"
+        id="amount"
+        name="amount"
+        placeholder="1000"
+        required
+        aria-required="true"
+        min="0"
+        step="0.01"
+      />
+
+      <button type="submit" class="submit-btn" aria-label="Register new account">
+        Register
+      </button>
+    </form>
+  </main>
+  <script>
+    // Set max date for DOB to today to prevent future dates
+    const dobInput = document.getElementById('dob');
+    if (dobInput) {
+      const today = new Date().toISOString().split('T')[0];
+      dobInput.setAttribute('max', today);
+    }
+  </script>
+
+  <script>
+  document.querySelector('form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = {
+      name: document.getElementById("name").value,
+      email: document.getElementById("email").value,
+      mobile: document.getElementById("phone").value,
+      dob: document.getElementById("dob").value,
+      password: document.getElementById("password").value,
+      amount: parseFloat(document.getElementById("amount").value)
+    };
+
+    const res = await fetch("http://127.0.0.1:5000/create_account", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(data)
+    });
+
+    const json = await res.json();
+    alert(json.message || json.error);
+  });
+  </script>
+
+</body>
+</html>
+

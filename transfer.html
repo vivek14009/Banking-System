@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Transfer Funds - Banking System</title>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  body, html {
+    margin: 0;
+    height: 100%;
+    font-family: 'Inter', sans-serif;
+    background-color: #f3f4f6;
+    color: #374151;
+  }
+
+  .app-container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  nav.sidebar {
+    width: 280px;
+    background: #ffffff;
+    box-shadow: 2px 0 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    padding: 32px 24px;
+  }
+
+  nav.sidebar h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 48px;
+    color: #111827;
+    text-align: center;
+    user-select: none;
+  }
+
+  nav.sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 20px;
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: #2563eb;
+    text-decoration: none;
+    border-radius: 12px;
+    margin-bottom: 16px;
+    border: 2px solid transparent;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+  }
+  nav.sidebar a.active,
+  nav.sidebar a:hover,
+  nav.sidebar a:focus-visible {
+    background-color: #e0e7ff;
+    color: #1e40af;
+    border-color: #1e40af;
+    outline: none;
+  }
+
+  nav.sidebar a:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 3px;
+  }
+
+  main.content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 40px 32px;
+    background: #f9fafb;
+  }
+
+  main.content h1 {
+    font-weight: 700;
+    font-size: 2.25rem;
+    margin-bottom: 36px;
+    color: #111827;
+    letter-spacing: -0.025em;
+  }
+
+  form {
+    background: #ffffff;
+    max-width: 480px;
+    padding: 32px 36px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  label {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #4b5563;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .material-icons {
+    color: #6b7280;
+    font-size: 22px;
+    user-select: none;
+  }
+
+  input[type="number"],
+  input[type="text"] {
+    padding: 14px 16px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1.5px solid #d1d5db;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    width: 100%;
+    outline-offset: 2px;
+  }
+  input[type="number"]:focus,
+  input[type="text"]:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 8px rgba(37,99,235,0.4);
+  }
+
+  button {
+    background: #2563eb;
+    color: white;
+    font-weight: 700;
+    font-size: 1.125rem;
+    padding: 16px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    user-select: none;
+  }
+  button:hover,
+  button:focus-visible {
+    background-color: #1d4ed8;
+    box-shadow: 0 6px 16px rgba(37,99,235,0.5);
+  }
+
+  input:focus-visible,
+  button:focus-visible {
+    outline: 3px solid #2563eb;
+    outline-offset: 3px;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .app-container {
+      flex-direction: column;
+    }
+    nav.sidebar {
+      width: 100%;
+      padding: 16px 20px;
+      flex-direction: row;
+      overflow-x: auto;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    nav.sidebar h2 {
+      display: none;
+    }
+    nav.sidebar a {
+      flex: 0 0 auto;
+      margin-bottom: 0;
+      padding: 12px 14px;
+      font-size: 1rem;
+      border-radius: 8px;
+    }
+    main.content {
+      padding: 24px 20px;
+    }
+    form {
+      max-width: 100%;
+      padding: 24px 24px 32px;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="app-container">
+    <nav class="sidebar" aria-label="Primary navigation">
+      <h2>Banking</h2>
+      <a href="deposit.html"><span class="material-icons" aria-hidden="true">arrow_downward</span>Deposit</a>
+      <a href="withdraw.html"><span class="material-icons" aria-hidden="true">arrow_upward</span>Withdraw</a>
+      <a href="transfer.html" class="active" aria-current="page"><span class="material-icons" aria-hidden="true">swap_horiz</span>Transfer</a>
+      <a href="request-loan.html"><span class="material-icons" aria-hidden="true">request_quote</span>Request Loan</a>
+      <a href="approve-loan.html"><span class="material-icons" aria-hidden="true">check_circle</span>Approve Loan</a>
+    </nav>
+    <main class="content" role="main" aria-labelledby="transferHeading">
+      <h1 id="transferHeading">Transfer Funds</h1>
+      <form action="#" method="POST" novalidate>
+        <label for="transferAmount">
+          <span class="material-icons" aria-hidden="true">currency_rupee</span>
+          Amount
+        </label>
+        <input
+          type="number"
+          id="transferAmount"
+          name="transferAmount"
+          placeholder="2000"
+          required
+          min="0.01"
+          step="0.01"
+          aria-required="true"
+        />
+        <label for="receiverAccount">
+          <span class="material-icons" aria-hidden="true">person_outline</span>
+          Receiver Account
+        </label>
+        <input
+          type="text"
+          id="receiverAccount"
+          name="receiverAccount"
+          placeholder="Receiver's name or account number"
+          required
+          aria-required="true"
+          autocomplete="off"
+        />
+        <button type="submit" aria-label="Submit fund transfer">Transfer</button>
+      </form>
+    </main>
+  </div>
+
+  <script>
+  document.querySelector('form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const sender_id = localStorage.getItem("user_id");
+    const amount = parseFloat(document.getElementById("transferAmount").value);
+    const receiverSearch = document.getElementById("receiverAccount").value;
+
+    const userListRes = await fetch(`http://127.0.0.1:5000/list_users?user_id=${sender_id}`);
+    const userList = await userListRes.json();
+    const receiver = userList.users.find(u => u.name.includes(receiverSearch));
+
+    if (!receiver) {
+      return alert("Receiver not found");
+    }
+
+    const res = await fetch("http://127.0.0.1:5000/transfer", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({ sender_id, receiver_id: receiver.id, amount })
+    });
+
+    const json = await res.json();
+    alert(json.message || json.error);
+  });
+  </script>
+
+</body>
+</html>
